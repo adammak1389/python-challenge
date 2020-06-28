@@ -26,13 +26,13 @@ with open(csvpath) as csvfile:
     #print (str(test_list.count))
     for row in csvreader:
         total_votes = total_votes + 1
-        print (str(row[0]))
-        myDict = dict (row[0],row[2])
+        #print (str(row[2]))
+        #myDict = dict (row[0],row[2])
         if row[2] not in candidates:
             print (str(row[2]))
             candidates.append(row[2])
-    for candidate in candidates:
-        print (candidate)
+    #for candidate in candidates:
+        #print (candidate)
         #(str.split(row[2]))
         #percent_won = (candidates/total_votes)*100
 
