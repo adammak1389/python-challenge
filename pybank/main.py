@@ -2,7 +2,7 @@
 import os
 import csv
 
-csvpath = os.path.join(r"C:\Users\adamm\python-challenge\pybank\resources\02-Homework_03-Python_Instructions_PyBank_Resources_budget_data.csv")
+csvpath = os.path.join(r"resources\02-Homework_03-Python_Instructions_PyBank_Resources_budget_data.csv")
 
 with open(csvpath) as csvfile:
 
@@ -37,5 +37,5 @@ print("Number of Months" + ":" + " " + str(x))
 print("total" + ":" " " + str(total_value))
 average_PL = total_value/x
 print("average_change" + ":" + " " + str(average_PL))
-print("Greatest Profit Increase" + ":" + " " + str(greatest_increase))
-print("Greatest Profit Decrease" + ":" + " " + str(greatest_decrease))
+print("Greatest Profit Increase" + ":" + " " + str(greatest_month) + " " + str(greatest_increase))
+print("Greatest Profit Decrease" + ":" + " " + str(worst_month) + " " + str(greatest_decrease))
