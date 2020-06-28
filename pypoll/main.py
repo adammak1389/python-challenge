@@ -1,40 +1,34 @@
 # Modules
 import os
 import csv
+from collections import Counter
 
-csvpath = os.path.join(r"C:\Users\adamm\python-challenge\pypoll\resources\02-Homework_03-Python_Instructions_PyPoll_Resources_election_data.csv")
+my_dict = dict()
+csvpath = os.path.join(r"resources/02-Homework_03-Python_Instructions_PyPoll_Resources_election_data.csv")
 
 with open(csvpath) as csvfile:
 
 
     csvreader = csv.reader(csvfile, delimiter=',')
-    
-    #test_list = list(csvreader)
-    #print (test_list.count('Li'))
-   # print(csvreader)
-
-    
-    csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
-    
-    total_votes = 0
-    candidates = []
-    #can = []
-    #vote = []
-    #county = []
-    #test_list = list(csvreader)
-    #print (str(test_list.count))
+    next(csvreader)
     for row in csvreader:
-        total_votes = total_votes + 1
-        #print (str(row[2]))
-        #myDict = dict (row[0],row[2])
-        if row[2] not in candidates:
-            print (str(row[2]))
-            candidates.append(row[2])
-    #for candidate in candidates:
-        #print (candidate)
-        #(str.split(row[2]))
-        #percent_won = (candidates/total_votes)*100
+            # my_dict[int(row[0])]= row[2]
+        my_dict.update({row[0]:row[2]})
+        #print(row[0])
+        #print(row[0],row[1],row[2],)
 
 
-print("Total Votes Cast" + ":" + " " + str(total_votes))
+    total_vote = int(my_dict.__len__())
+res = Counter(my_dict.values())
+
+print ("Election Results")
+print ("-----------------")
+print ("Total Votes:" + str(total_vote))
+print ("-----------------")
+for k,v in res.items():
+    candidate = k
+    candidate_vote = int(v)
+    candidate_percent = float(float(candidate_vote)/float(total_vote)) * 100
+    print (candidate + "  "+ str(candidate_percent) +"%"  + "  " + "(" + str(candidate_vote) + ")" )
+
+print ("Winner: " + str(next(iter(res))))
